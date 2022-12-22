@@ -1,0 +1,49 @@
+// リンクリスト
+[data-type="loos/link-list"] {
+    .block-list-appender {
+        width: 100%;
+    }
+
+    &.is-style-button {
+        .block-list-appender.block-list-appender {
+            margin-top: .5em;
+        }
+    }
+
+    &.-flex {
+        .block-list-appender.block-list-appender {
+            margin-top: .5em;
+        }
+    }
+}
+
+
+.swl-exStyleArea {
+    .components-base-control {
+        margin-bottom: 1em;
+    }
+}
+
+
+.swl-modal--linkList {
+    .components-tab-panel__tab-content {
+        padding: 1em .5em;
+    }
+
+    .swl-linkList-terms {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+
+        // 入れ子のリスト
+        ul {
+            padding-left: 1.25em;
+            list-style: none;
+        }
+    }
+
+    .swl-modal--linkList__btns {
+        display: flex;
+        gap: 1em;
+    }
+}

@@ -1,0 +1,222 @@
+:root {
+	--arkb-list_color_num: var(--ark-color--main, #000);
+	--arkb-list_color_icon: var(--ark-color--main, #000);
+}
+
+// ----------------------------------------
+// 画像ブロックのスタイル
+// ----------------------------------------
+.is-style-ark-media-shadow {
+
+	img,
+	video {
+		box-shadow: var(--arkb-shadow);
+	}
+
+}
+
+.is-style-ark-media-border {
+
+	img,
+	video {
+		border: solid 1px var(--ark-color--border, rgba(200, 200, 200, .5));
+	}
+
+}
+
+.is-style-ark-media-frame {
+	width: fit-content;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 12px;
+	background-color: #fff;
+	box-shadow: var(--arkb-shadow);
+
+	figcaption {
+		margin-top: 8px;
+		margin-bottom: -4px;
+	}
+}
+
+
+// ----------------------------------------
+// listブロックのスタイル
+// ----------------------------------------
+[class*="is-style-ark-list-"] {
+	padding: var(--arkb-list-padding, 0) !important;
+
+	&.has-background {
+		--arkb-list-padding: 1.5em 1.75em 1.5em 1.5em;
+	}
+
+	> li {
+		position: relative;
+		list-style: none !important;
+	}
+}
+
+[class*="is-style-ark-list-icon"] {
+
+	> li {
+		padding-left: 1.75em;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: .25em;
+			display: block;
+			width: 1em;
+			height: auto;
+			color: var(--arkb-list_color_icon);
+			font-family: arkb-icon;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+	}
+}
+
+.is-style-ark-list-icon--check {
+	--arkb-list_color_icon: #7dd872;
+
+	> li::before {
+		content: "\e900";
+	}
+}
+
+.is-style-ark-list-icon--good {
+	--arkb-list_color_icon: #7dd872;
+
+	> li::before {
+		content: "\e902";
+	}
+}
+
+.is-style-ark-list-icon--bad {
+	--arkb-list_color_icon: #ef6b6b;
+
+	> li::before {
+		content: "\e901";
+	}
+}
+
+
+.is-style-ark-list-note {
+
+	&:not(.has-text-color) {
+		opacity: .8;
+	}
+
+	> li {
+		padding-left: 1em;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: scale(.75);
+			content: "※";
+		}
+	}
+}
+
+ol.is-style-ark-list-note {
+	counter-reset: arkb-ct;
+
+	li {
+		padding-left: 1.5em;
+
+		&::before {
+			letter-spacing: 4px;
+			content: "※" counter(arkb-ct);
+			counter-increment: arkb-ct;
+		}
+	}
+
+	&[reversed] > li::before {
+		counter-increment: arkb-ct -1;
+	}
+}
+
+
+.is-style-ark-list-numbered {
+	counter-reset: arkb-ct;
+
+	li {
+		position: relative;
+		padding-left: 2em;
+		line-height: 1.8 !important;
+		list-style: none !important;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: .25em;
+			display: block;
+			box-sizing: content-box;
+			width: 1.8em;
+			height: 1.8em;
+			padding: 0;
+			color: #fff;
+			line-height: inherit;
+			text-align: center;
+			background-color: var(--arkb-list_color_num);
+			border-radius: 50%;
+			transform: scale(.75);
+			transform-origin: 0% 50%;
+			content: counter(arkb-ct);
+			counter-increment: arkb-ct;
+		}
+
+		// &::before {
+		// 	color: var(--arkb-list_color_num);
+		// 	background: none;
+		// 	box-shadow: inset 0 0 0 1px currentColor;
+		// }
+	}
+
+	&[reversed] > li::before {
+		counter-increment: arkb-ct -1;
+	}
+
+
+	ol {
+		padding-left: 0 !important;
+		counter-reset: arkb-ct2;
+
+		// 子要素は塗り潰しではなくボーダー
+		li::before {
+			color: var(--arkb-list_color_num);
+			background: none;
+			box-shadow: inset 0 0 0 1px currentColor;
+		}
+
+		> li::before {
+			content: counter(arkb-ct2);
+			counter-increment: arkb-ct2;
+		}
+
+		ol {
+			counter-reset: arkb-ct3;
+
+			> li::before {
+				content: counter(arkb-ct3);
+				counter-increment: arkb-ct3;
+			}
+		}
+	}
+
+	ul {
+		padding-left: 0 !important;
+
+		li {
+			padding-left: 1.25em;
+		}
+
+		li::before {
+			transform: scale(.25);
+			content: "";
+			counter-increment: none;
+		}
+	}
+}

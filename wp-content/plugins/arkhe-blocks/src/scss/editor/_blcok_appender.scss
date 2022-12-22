@@ -1,0 +1,17 @@
+// ブロック追加ボタン
+.ark-block-columns__inner,
+.ark-block-boxLinks__inner,
+.ark-block-accordion,
+.ark-block-step,
+.ark-block-timeline,
+.ark-block-dl,
+.ark-block-faq {
+
+	> .block-list-appender.block-list-appender {
+		position: relative;
+
+		.block-editor-button-block-appender {
+			padding: 4px;
+		}
+	}
+}
